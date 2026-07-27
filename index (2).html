@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever & Always | A Special Proposal ✨</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            user-select: none;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #2d0b4a, #130026, #05000e);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Canvas Layer */
+        #starCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Glowing Moon */
+        .moon {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle at 35% 35%, #ffffff, #fff3bf, #fcc419);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(252, 196, 25, 0.8), 0 0 100px rgba(252, 196, 25, 0.4);
+            animation: moonPulse 4s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        @keyframes moonPulse {
+            0% { transform: scale(0.98); box-shadow: 0 0 40px rgba(252, 196, 25, 0.6); }
+            100% { transform: scale(1.03); box-shadow: 0 0 80px rgba(252, 196, 25, 0.9); }
+        }
+
+        /* Orbiting Romantic Phrases Ring */
+        .orbit-container {
+            position: absolute;
+            width: 530px;
+            height: 530px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: spinOrbit 28s linear infinite;
+            z-index: 3;
+        }
+
+        @keyframes spinOrbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .orbit-item {
+            position: absolute;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 230, 240, 0.9);
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.9);
+            letter-spacing: 2px;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .orbit-item:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+        .orbit-item:nth-child(2) { top: 50%; right: -30px; transform: translateY(-50%) rotate(90deg); }
+        .orbit-item:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%) rotate(180deg); }
+        .orbit-item:nth-child(4) { top: 50%; left: -30px; transform: translateY(-50%) rotate(-90deg); }
+
+        /* Glassmorphism Proposal Card */
+        .card {
+            width: 450px;
+            max-width: 90vw;
+            padding: 45px 35px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1.5px solid rgba(255, 192, 203, 0.35);
+            border-radius: 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(255, 105, 180, 0.25);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
+            letter-spacing: 0.5px;
+        }
+
+        /* Typewriter & Message Styles */
+        .proposal-text-container {
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .proposal-text {
+            font-size: 16px;
+            color: #f1e7fe;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .highlight-text {
+            font-family: 'Caveat', cursive;
+            font-size: 26px;
+            color: #ffda79;
+            display: block;
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(255, 218, 121, 0.6);
+        }
+
+        /* Interactive Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            min-height: 55px;
+        }
+
+        .btn {
+            padding: 13px 38px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff3366, #ff6b81);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 12px 35px rgba(255, 51, 102, 0.85);
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: absolute;
+            transition: all 0.15s ease-out;
+        }
+
+        /* Celebration Screen Animation */
+        .celebration-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+            animation: zoomIn 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes zoomIn {
+            0% { opacity: 0; transform: scale(0.4); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .teddy {
+            font-size: 100px;
+            animation: floatTeddy 2.5s infinite ease-in-out;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+            margin-bottom: 5px;
+        }
+
+        @keyframes floatTeddy {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(6deg); }
+        }
+
+        .celebration-screen h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 64px;
+            color: #ff4757;
+            text-shadow: 0 0 25px rgba(255, 71, 87, 0.9);
+            margin: 0;
+        }
+
+        .celebration-screen h3 {
+            font-size: 22px;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .celebration-screen p {
+            font-size: 16px;
+            color: #ffeaa7;
+            letter-spacing: 1.5px;
+            font-weight: 300;
+        }
+
+        /* Falling Items */
+        .falling-item {
+            position: absolute;
+            top: -60px;
+            pointer-events: none;
+            animation: fallAnimation 4s linear forwards;
+            z-index: 6;
+        }
+
+        @keyframes fallAnimation {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .orbit-container { display: none; }
+            .moon { width: 75px; height: 75px; top: 20px; right: 20px; }
+            .celebration-screen h1 { font-size: 48px; }
+            .teddy { font-size: 80px; }
+            .card { padding: 35px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Star Canvas -->
+    <canvas id="starCanvas"></canvas>
+
+    <!-- Moon -->
+    <div class="moon"></div>
+
+    <!-- Orbiting Romantic Phrases -->
+    <div class="orbit-container">
+        <div class="orbit-item">✨ You Are My Universe ✨</div>
+        <div class="orbit-item">💖 Forever & Always 💖</div>
+        <div class="orbit-item">💍 My Soulmate & Best Friend 💍</div>
+        <div class="orbit-item">🌸 Our Eternity Begins Here 🌸</div>
+    </div>
+
+    <!-- Step 1: Initial Card -->
+    <div class="card" id="step1">
+        <h2>✨ A Secret Letter ✨</h2>
+        <div class="proposal-text-container">
+            <p class="proposal-text">I saved a piece of my heart in a special message just for you... Are you ready to unlock it? ❤️</p>
+        </div>
+        <button class="btn btn-primary" onclick="goToStep2()">Open Secret Note 💌</button>
+    </div>
+
+    <!-- Step 2: The Proposal Card -->
+    <div class="card" id="step2" style="display: none;">
+        <h2>My Dearest Lisa ❤️</h2>
+        <div class="proposal-text-container">
+            <p class="proposal-text" id="typewriterText"></p>
+        </div>
+        <div class="btn-container" id="proposalButtons" style="opacity: 0; transition: opacity 0.8s ease;">
+            <button class="btn btn-primary" onclick="acceptLove()">YES 💕</button>
+            <button class="btn btn-no" id="noBtn" onmouseover="dodgeButton()" onclick="dodgeButton()">NO 💔</button>
+        </div>
+    </div>
+
+    <!-- Step 3: Celebration Screen -->
+    <div class="celebration-screen" id="celebration">
+        <div class="teddy">🧸</div>
+        <h1>I Love You Forever</h1>
+        <h3>You Just Made Me The Happiest Person Alive 🌌</h3>
+        <p>Our Eternal Love Story Begins Today 💍✨</p>
+    </div>
+
+    <script>
+        // Interactive Canvas Background (Stars & Sparkles)
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const stars = [];
+        const numStars = 120;
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.8 + 0.5,
+                alpha: Math.random(),
+                speed: Math.random() * 0.02 + 0.005
+            });
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0) {
+                    star.speed = -star.speed;
+                }
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.alpha)})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#ffffff';
+                ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // Special Romantic Proposal Message (Typewriter Effect)
+        const specialMessage = "Among billions of people in this world, my heart chose you. You bring warmth, peace, and endless light into my life.\n\nWill you take my hand and walk through life with me forever? 💍";
+
+        function goToStep2() {
+            document.getElementById('step1').style.display = 'none';
+            const step2 = document.getElementById('step2');
+            step2.style.display = 'block';
+
+            // Initial positioning for NO button
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.right = '20px';
+
+            // Start Typewriter Animation
+            let index = 0;
+            const targetElement = document.getElementById('typewriterText');
+            targetElement.innerHTML = "";
+
+            function typeWriter() {
+                if (index < specialMessage.length) {
+                    let char = specialMessage.charAt(index);
+                    if (char === '\n') {
+                        targetElement.innerHTML += '<br>';
+                    } else {
+                        targetElement.innerHTML += char;
+                    }
+                    index++;
+                    setTimeout(typeWriter, 35);
+                } else {
+                    targetElement.innerHTML += '<span class="highlight-text">I love you more than words can ever hold! 💕</span>';
+                    document.getElementById('proposalButtons').style.opacity = '1';
+                }
+            }
+            typeWriter();
+        }
+
+        // Smart Dodge Mechanism for 'NO' Button
+        function dodgeButton() {
+            const noBtn = document.getElementById('noBtn');
+            const maxX = 140;
+            const maxY = 140;
+
+            const randomX = (Math.random() - 0.5) * (maxX * 2);
+            const randomY = (Math.random() - 0.5) * (maxY * 2);
+
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        // Proposal Acceptance & Continuous Showering Celebration
+        function acceptLove() {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('celebration').style.display = 'flex';
+
+            // Continuous Flower & Heart Showering
+            setInterval(createShoweringElement, 100);
+        }
+
+        function createShoweringElement() {
+            const icons = ['🌸', '💖', '🌺', '✨', '🌹', '❤️', '🍒', '💍', '✨'];
+            const item = document.createElement('div');
+            item.className = 'falling-item';
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.fontSize = (Math.random() * 24 + 16) + 'px';
+            item.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
